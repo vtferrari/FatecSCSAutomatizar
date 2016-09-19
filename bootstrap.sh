@@ -1,11 +1,12 @@
 #!/bin/bash
-
-mkdir /home/$USER/Programas
-mkdir /home/$USER/Projetos
-
-sudo apt-get upgrade -y
-sudo apt-get update -y
-
+if [ ! -d "/home/$USER/Programas" ]; then
+   mkdir /home/$USER/Programas
+fi
+if [ ! -d "/home/$USER/Projetos" ]; then
+   mkdir /home/$USER/Projetos
+   sudo apt-get upgrade -y
+   sudo apt-get update -y
+fi
 clear
 
 if which git > /dev/null ; then
@@ -98,8 +99,12 @@ if [ ! -f "/home/$USER/meu_init.sh" ]; then
 	sudo update-rc.d meu_init.sh defaults
     fi
 fi
-
-
+if ! grep -q "minha_crontab" "/etc/crontab"; then
+     sudo chmod 776 /etc/crontab
+     sudo echo "* * * * *  root sh /home/$USER/minha_crontab.sh crontab1" >> /etc/crontab
+     sudo echo "*/2 * * * *  root sh /home/$USER/minha_crontab.sh crontab2" >> /etc/crontab
+     sudo chmod 400 /etc/crontab
+fi
 
 
 
