@@ -86,8 +86,11 @@ if [ ! -f "/home/$USER/meu_init.sh" ]; then
 	mv /home/$USER/FatecSCSAutomatizar/* /home/$USER/
 	chmod a+x meu_init.sh
 	chmod a+x minha_crontab.sh
+	rm -rf FatecSCSAutomatizar/
+	mv /home/$USER/meu_init.sh /etc/init.d/meu_init.sh
     fi
 fi
+
 
 
 
