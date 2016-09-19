@@ -81,12 +81,13 @@ else
     echo "tomcat já esta instalado"
 fi
 if [ ! -f "/home/$USER/meu_init.sh" ]; then
-    touch  meu_init.sh
-    "teset" > meu_init.sh
-else
-    echo "Init já foi criado"
+    if [ ! -d "/home/$USER/FatecSCSAutomatizar" ]; then
+        git clone https://github.com/vtferrari/FatecSCSAutomatizar.git
+	mv /home/$USER/FatecSCSAutomatizar/* /home/$USER/
+	chmod a+x meu_init.sh
+	chmod a+x minha_crontab.sh
+    fi
 fi
-
 
 
 
