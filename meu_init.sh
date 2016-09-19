@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "iniciado script MEU INIT"
+
 cd /home/$USER/
 
 if which apache2 > /dev/null ; then
