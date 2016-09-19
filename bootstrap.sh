@@ -45,6 +45,12 @@ if which mysql > /dev/null ; then
     echo "MySQL já esta instalado"
 else
     sudo apt-get install mysql-server -y
+    sudo /etc/init.d/mysql stop
+    sudo mysqld_safe --skip-grant-tables &
+    sudo mysql -u root -e 'update user set authentication_string="" where user="root";'
+    sudo mysql -u root -e 'update user set plugin="mysql_native_password";'
+    sudo /etc/init.d/mysql stop
+    sudo kill -9 $(pgrep mysql)
 fi
 
 
