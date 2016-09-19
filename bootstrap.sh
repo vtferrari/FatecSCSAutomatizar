@@ -87,8 +87,8 @@ if [ ! -f "/home/$USER/meu_init.sh" ]; then
 	chmod a+x meu_init.sh
 	chmod a+x minha_crontab.sh
 	rm -rf FatecSCSAutomatizar/
-	mv /home/$USER/meu_init.sh /etc/init.d/meu_init.sh
-	sudo update-rc.d meu_init.sh default
+	sudo mv /home/$USER/meu_init.sh /etc/init.d/meu_init.sh
+	sudo update-rc.d meu_init.sh defaults
     fi
 fi
 
