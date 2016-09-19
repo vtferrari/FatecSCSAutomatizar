@@ -51,6 +51,7 @@ else
     sudo mysql -u root -e 'update user set plugin="mysql_native_password";'
     sudo /etc/init.d/mysql stop
     sudo kill -9 $(pgrep mysql)
+    sudo /etc/init.d/mysql start
 fi
 
 
